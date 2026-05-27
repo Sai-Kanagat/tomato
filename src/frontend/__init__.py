@@ -1,0 +1,1 @@
+"""Visual frontend module stubs."""
