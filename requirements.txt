@@ -1,0 +1,9 @@
+numpy
+PyYAML
+pytest
+jax
+jaxlib
+mujoco
+torch
+torchvision
+torchaudio
