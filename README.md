@@ -18,6 +18,10 @@ Production-ready initialization scaffold for a monocular visual-to-neural-contro
 
 Start with **desktop GPU scaling benchmarks first** to validate physics + model correctness under high-throughput conditions, then profile and optimize **consumer mobile chip latency** against the 16.6ms runtime gate.
 
+## Citation Note
+
+`ARCHITECTURE_SPEC.md` intentionally preserves the original source citation marker syntax (e.g., `[cite_start]`, `[cite: N]`) so no technical references or formula context are lost during initialization.
+
 ## Quick Start
 
 ```bash

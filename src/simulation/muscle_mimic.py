@@ -27,7 +27,12 @@ class SynergyController:
     """
 
     def __init__(self, muscle_count: int = 416, synergy_count: int = 5) -> None:
-        self.W = np.ones((muscle_count, synergy_count), dtype=np.float32) / max(synergy_count, 1)
+        if synergy_count < 1:
+            raise ValueError("synergy_count must be at least 1")
+        if muscle_count < 1:
+            raise ValueError("muscle_count must be at least 1")
+        # Placeholder scaffold initialization; replace with NMF-derived W in model training flows.
+        self.W = np.ones((muscle_count, synergy_count), dtype=np.float32) / synergy_count
 
     def reconstruct(self, c_t: np.ndarray) -> np.ndarray:
         a_t = self.W @ c_t
@@ -43,7 +48,7 @@ class SVKComplianceModel:
     """
 
     @staticmethod
-    def energy_density(E: np.ndarray, lame_lambda: float, lame_mu: float) -> float:
+    def energy_density(E: np.ndarray, lame_const_lambda: float, lame_mu: float) -> float:
         trace_E = float(np.trace(E))
         trace_E2 = float(np.trace(E @ E))
-        return 0.5 * lame_lambda * (trace_E**2) + lame_mu * trace_E2
+        return 0.5 * lame_const_lambda * (trace_E**2) + lame_mu * trace_E2

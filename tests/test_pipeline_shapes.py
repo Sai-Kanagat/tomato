@@ -1,4 +1,5 @@
 import numpy as np
+import pytest
 
 from src.kinetics.gait_dynamics import GaitDynamicsPipeline
 from src.simulation.muscle_mimic import SynergyController
@@ -18,3 +19,8 @@ def test_synergy_output_is_bounded_and_high_dimensional():
     assert activations.shape == (416,)
     assert np.all(activations >= 0.0)
     assert np.all(activations <= 1.0)
+
+
+def test_synergy_controller_rejects_invalid_sizes():
+    with pytest.raises(ValueError):
+        SynergyController(muscle_count=416, synergy_count=0)
