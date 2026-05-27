@@ -28,3 +28,4 @@ Start with **desktop GPU scaling benchmarks first** to validate physics + model 
 python -m pip install -r requirements.txt
 pytest -q
 ```
+VeloMove
